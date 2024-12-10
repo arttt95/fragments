@@ -6,13 +6,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 //import androidx.customview.R
 import androidx.fragment.app.Fragment
 import com.arttt95.fragments.R
-import javax.security.auth.login.LoginException
-import kotlin.math.log
 
+//class ConversasFragment : Fragment(R.layout.fragment_conversas) {
 class ConversasFragment : Fragment() {
+
+    private lateinit var editNome: EditText
+    private lateinit var textNome: TextView
+    private lateinit var btnExecutar: Button
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -30,6 +36,7 @@ class ConversasFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
         Log.i("ciclo_vida", "Fragment OnCreateView")
 
         val view = inflater.inflate(
@@ -39,6 +46,18 @@ class ConversasFragment : Fragment() {
         )
 
         // Processamento da visualização
+        editNome = view.findViewById(R.id.edit_nome)
+        textNome = view.findViewById(R.id.text_nome)
+        btnExecutar = view.findViewById(R.id.btn_executar)
+
+        btnExecutar.setOnClickListener {
+
+            /*val nome = editNome.text.toString()
+            textNome.text = nome*/
+
+            textNome.text = editNome.text.toString()
+
+        }
 
         return view
     }
